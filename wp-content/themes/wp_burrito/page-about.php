@@ -30,20 +30,20 @@ get_header(); ?>
       <h2 class="about-block__title">Chef</h2>
       <div class="about-chef__content">
         <div class="about-chef__left wow animate__fadeInLeft" data-wow-offset="300" data-wow-delay=".1s">
-          <img src="img/chef.png" alt="chef">
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/chef.png" alt="chef">
           <button class="about__overlay" data-graph-path="modal-first" data-id="6"></button>
         </div>
         <div class="about-chef__right wow animate__fadeInRight" data-wow-offset="300" data-wow-delay=".1s">
         <div class="about-chef__subtitle">Chef of the chili bar «Burrito»</div>
         <div class="about-chef__name">Pablo Gonzalez</div>
         <div class="about-chef__images">
-          <div class="about-chef__img"><img src="img/about-dish-1.png" alt="salad">
+          <div class="about-chef__img"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/about-dish-1.png" alt="salad">
             <button class="about__overlay" data-graph-path="modal-first" data-id="7"></button>
           </div>
-          <div class="about-chef__img"><img src="img/about-dish-2.png" alt="burrito">
+          <div class="about-chef__img"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/about-dish-2.png" alt="burrito">
             <button class="about__overlay" data-graph-path="modal-first" data-id="8"></button>
           </div>
-          <div class="about-chef__img"><img src="img/about-dish-3.png" alt="nuts">
+          <div class="about-chef__img"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/about-dish-3.png" alt="nuts">
             <button class="about__overlay" data-graph-path="modal-first" data-id="9"></button>
           </div>
         </div>
