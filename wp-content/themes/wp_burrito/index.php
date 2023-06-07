@@ -2,7 +2,7 @@
 get_header(); ?>
 <body class="body">
   <div class="site-container">
-    <header class="header container">
+    <div class="header container">
   <div class="header__container">
     <div class="header-logo wow animate__fadeInLeft">
       <h1 class="header-logo__title">burrito</h1>
@@ -10,15 +10,24 @@ get_header(); ?>
       <span class="header-logo__subtitle">chilebar</span>
     </div>
      <div class="nav-wrap">
-    <nav class="nav header__nav wow animate__fadeInDown">
-      <ul class="nav__list list-reset">
-        <li class="nav__item"><a href="#" class="nav__link">main</a></li>
-        <li class="nav__item"><a href="#" class="nav__link">about us</a></li>
-        <li class="nav__item"><a href="#" class="nav__link">menu</a></li>
-        <li class="nav__item"><a href="#" class="nav__link">reservation</a></li>
-        <li class="nav__item"><button class="btn-reset btn-order nav__link cart__count">cart</button></li>
-  </ul>
-  </nav>
+    
+    
+      <?php 
+      $args = array(
+        'theme_location' => 'main',
+        'menu_class' => 'nav__list list-reset',
+        'container' => '',
+        
+        'walker'=> new True_Walker_Nav_Menu()// этот параметр нужно добавить
+       
+       
+      );
+      wp_nav_menu( $args );
+      
+      //wp_nav_menu ((['container' => ''])); 
+      //my_nav_menu( [ 'theme_location'  => 'navigation_menu_primary' ] );
+      ?>
+      
   </div>
   <div class="burger-wrap">
     <button class="burger btn-reset">
@@ -81,7 +90,7 @@ get_header(); ?>
   </div>
   </div>
   </div>
-</header>
+    </div>
 
      <!---->
      <div class="section hero">

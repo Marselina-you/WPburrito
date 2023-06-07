@@ -1,0 +1,11 @@
+.menu {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: center;
+}
+.menu-item {
+
+}
