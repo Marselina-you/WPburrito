@@ -10,7 +10,7 @@
     </div>
     <a class="arrow-up" href="#top">
       <svg class="animate__animated animate__fadeInUp animate__infinite animate__slower wow" data-wow-offset="200">
-            <use xlink:href="img/sprite.svg#up-arrow"></use>
+            <use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/img/sprite.svg#up-arrow"></use>
           </svg>
         </a>
   </div>

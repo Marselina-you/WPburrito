@@ -18,12 +18,13 @@
       <span class="header-logo__subtitle">chilebar</span>
     </div>
      <div class="nav-wrap">
+      <nav class="nav header__nav wow animate__fadeInDown">
     
     
       <?php 
       $args = array(
         'theme_location' => 'main',
-        'menu_class' => 'nav__list list-reset',
+        'menu_class' => 'list-reset nav__list',
         'container' => '',
         
         'walker'=> new True_Walker_Nav_Menu()// этот параметр нужно добавить
@@ -34,8 +35,8 @@
       
       //wp_nav_menu ((['container' => ''])); 
       //my_nav_menu( [ 'theme_location'  => 'navigation_menu_primary' ] );
-      ?>
-      
+      ?> <button class="btn-reset btn-order nav__link cart__count">cart</button>
+      </nav> 
   </div>
   <div class="burger-wrap">
     <button class="burger btn-reset">

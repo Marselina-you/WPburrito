@@ -9,11 +9,11 @@
 add_action('wp_enqueue_scripts', 'blog_assets');
 register_nav_menu('main', 'Main Menu');
 
-add_filter( 'wp_nav_menu', 'change_wp_nav_menu', 10, 2 );
+//add_filter( 'wp_nav_menu', 'change_wp_nav_menu', 10, 2 );
 
-function change_wp_nav_menu( $nav_menu, $args ) {
-	return '<nav class="nav header__nav wow animate__fadeInDown">' . $nav_menu . '</nav>';
-}
+//function change_wp_nav_menu( $nav_menu, $args ) {
+	//return '<nav class="nav header__nav wow animate__fadeInDown">' . $nav_menu . '</nav>';
+//}
 $walker = new Walker_Nav_Menu;
 $args = array(
 	'walker' => $walker,

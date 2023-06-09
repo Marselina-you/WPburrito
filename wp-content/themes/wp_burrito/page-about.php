@@ -12,7 +12,7 @@ get_header(); ?>
       It will be noisy, hot and spicy!</div>
       <div class="down-wrap">
         <a href="#down" class="about__down">
-          <svg class="animate__animated animate__fadeInDown animate__infinite animate__slower"><use xlink:href="img/sprite.svg#arrows-down"></use></svg>
+          <svg class="animate__animated animate__fadeInDown animate__infinite animate__slower"><use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/img/sprite.svg#arrows-down"></use></svg>
         </a>
       </div>
   </div>
