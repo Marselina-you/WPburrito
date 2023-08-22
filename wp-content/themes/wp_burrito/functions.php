@@ -109,5 +109,6 @@ class True_Walker_Nav_Menu extends Walker_Nav_Menu {
  		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
 }
-
+define( 'WPCF7_AUTOP', false );
+add_filter('wpcf7_autop_or_not', '__return_false');
 
