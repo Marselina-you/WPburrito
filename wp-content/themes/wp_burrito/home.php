@@ -16,7 +16,7 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-6.jpg);">
         <div class="order-swiper-slide__content wow animate__fadeIn" data-wow-duration="2s">
           <div class="swiper-slide__logo">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="logo" >
+          <?php the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
@@ -29,7 +29,7 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-1.jpg);">
         <div class="order-swiper-slide__content">
           <div class="swiper-slide__logo">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="logo" >
+          <?php the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
@@ -42,7 +42,7 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-2.jpg);">
         <div class="order-swiper-slide__content">
           <div class="swiper-slide__logo">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="logo" >
+          <?php the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
@@ -55,7 +55,7 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-3.jpg);">
         <div class="order-swiper-slide__content">
           <div class="swiper-slide__logo">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="logo" >
+          <?php the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
@@ -69,11 +69,11 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-4.jpg);">
         <div class="order-swiper-slide__content">
           <div class="swiper-slide__logo">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="logo" >
+            <?php the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
-            <img class="header-logo__decor" src="<?php echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
+          <img class="header-logo__decor" src="<?php echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
           </div>
           <div class="order-swiper-slide__subtitle">chilebar</div>
         </div>
@@ -81,7 +81,7 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-5.jpg);">
         <div class="order-swiper-slide__content">
           <div class="swiper-slide__logo">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="logo" >
+          <?php the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
@@ -93,7 +93,7 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-1.jpg);">
         <div class="order-swiper-slide__content">
           <div class="swiper-slide__logo">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="logo" >
+          <?php the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
