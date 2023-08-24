@@ -9,9 +9,11 @@ get_header(); ?>
       <?php $args = array(
 	'post_type'          => 'products',
 	'taxonomy'           => 'product_cat',
-  'product_cat'           => 'menu',
-  'separator'          => '<li class="header-menu-nav__item">', 
+  'child_of'           => '27',
+  //'title_li'  => '',
+  'separator'          => '', 
   'style' => '',
+  
 	
   
 ); 
@@ -85,13 +87,22 @@ while ( $loop->have_posts() ): $loop->the_post(); ?>
    
     
     <nav class="header-menu-nav header-menu-nav--bottom" title="">
-
-      <ul class="header-menu-nav__list list-reset">
-        <li class="header-menu-nav__item"><a href="#" class="nav__link">Appetizers</a></li>
-        <li class="header-menu-nav__item"><a href="#" class="nav__link">Main Dishes</a></li>
-        <li class="header-menu-nav__item"><a href="#" class="nav__link">Desserts</a></li>
-
-      </ul>
+    <?php $args = array(
+	'post_type'          => 'products',
+	'taxonomy'           => 'product_cat',
+  'child_of'           => '27',
+  //'title_li'  => '',
+  'separator'          => '', 
+  'style' => '',
+  
+	
+  
+); 
+echo '<ul class="header-menu-nav__list list-reset">';
+wp_list_categories( $args );
+echo '</ul>';
+?>
+     
     </nav>
     <hr width="50%">
 </div>
@@ -100,10 +111,22 @@ while ( $loop->have_posts() ): $loop->the_post(); ?>
   <div class="container menu-dop__container">
     <div class="menu-dop__left">
       <nav class="header-menu-nav menu-dop__header" title="">
-        <ul class="header-menu-nav__list list-reset">
-          <li class="header-menu-nav__item"><a href="#" class="nav__link">Extras</a></li>
-          <li class="header-menu-nav__item"><a href="#" class="nav__link">Beverages</a></li>
-        </ul>
+      <?php $args = array(
+	'post_type'          => 'products',
+	'taxonomy'           => 'product_cat',
+  'child_of'           => '28',
+  //'title_li'  => '',
+  'separator'          => '', 
+  'style' => '',
+  
+	
+  
+); 
+echo '<ul class="header-menu-nav__list list-reset">';
+wp_list_categories( $args );
+echo '</ul>';
+?>
+        
       </nav>
      
       <ul class="list-reset menu-dop__list">
@@ -130,7 +153,7 @@ while ( $loop->have_posts() ): $loop->the_post(); ?>
             <img src="img/plus.svg" alt=""></div><div class="quantity-button quantity-down"><img src="img/minus.svg" alt=""></div></div>
           </div>
         </div>
-        <div class="menu-dop__value"><span class="value" data-price="${item.price}"><?php woocommerce_template_loop_price(); ?><span>  €</span></div>
+        <div class="menu-dop__value"><span class="value" data-price="${item.price}"><?php woocommerce_template_loop_price(); ?></div>
       </li><?php endwhile; wp_reset_postdata(); ?>
       </ul>
     </div>

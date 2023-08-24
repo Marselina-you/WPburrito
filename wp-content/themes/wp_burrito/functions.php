@@ -162,6 +162,13 @@ $list = str_replace('href=', 'class="nav__link" href=',$list);
 return $list;
 }
 
+add_filter ( 'wp_list_categories', 'li_before_link_list_categories' );
+
+function li_before_link_list_categories( $list ) {
+$list = str_replace('<a class=', '<li class="header-menu-nav__item"><a class=',$list);
+return $list;
+}
+
 
 
 
