@@ -154,6 +154,52 @@ function fix_svg_mime_type( $data, $file, $filename, $mimes, $real_mime = '' ){
 
 	return $data;
 }
+add_action( 'woocommerce_after_shop_loop', 'rs_show_weights', 9 );
+
+function rs_show_weights() {
+
+    global $product;
+    $weight = $product->get_weight();
+
+    if ( $product->has_weight() ) {
+        echo '<div class="product-meta">' . $weight . get_option('woocommerce_weight_unit') . '</div></br>';
+    }
+}
+add_action( 'show_product_short_description', 'show_product_short_description' );
+
+function show_product_short_description() {
+
+	global $product;
+
+	if ( $tmp_desc = $product->get_short_description() ) {
+		echo  $tmp_desc;
+	}
+
+}
+add_action('display_custom_product_attributes_on_loop', 'display_custom_product_attributes_on_loop' );
+function display_custom_product_attributes_on_loop() {
+    global $product;
+
+    $value1 = $product->get_attribute('calories');
+    
+
+    if ( ! empty($value1) ) {
+
+       
+
+        $attributes = array(); // Initializing
+
+        if ( ! empty($value1) ) {
+            $attributes[] =    $value1 .' ' . __("Kk") ;
+        }
+
+        
+
+        
+
+        echo implode(  $attributes ) ;
+    }
+}
 
 add_filter ( 'wp_list_categories', 'span_before_link_list_categories' );
 

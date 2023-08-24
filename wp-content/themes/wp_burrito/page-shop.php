@@ -51,11 +51,10 @@ while ( $loop->have_posts() ): $loop->the_post(); ?>
         <h3 class="menu-content-text__title"><span>
         <a href="<?php the_permalink(); ?>">
         <?php the_title(); ?></a>
-        </span>&nbsp;<span class="menu-content-text__value">
-<?php woocommerce_template_loop_price(); ?></span></h3>
-        <div class="menu-content-text__components"></div>
-        <div class="menu-content-text__calories"> Kk</div>
-        <div class="menu-content-text__weight"><?php the_content(); ?> g</div>
+        </span>&nbsp;<span class="menu-content-text__value"><?php woocommerce_template_loop_price(); ?></span></h3>
+        <div class="menu-content-text__components"><?php  do_action( 'show_product_short_description' ); ?></div>
+        <div class="menu-content-text__calories"><?php do_action( 'display_custom_product_attributes_on_loop' ); ?></div>
+        <div class="menu-content-text__weight"><?php do_action( 'woocommerce_after_shop_loop'); ?></div>
         <button class="btn-reset btn btn--order menu-content-text__btn">order</button>
         <div class="add-plus add-plus--none">
           <div class="add-plus__minus">
@@ -114,8 +113,8 @@ echo '</ul>';
       <?php $args = array(
 	'post_type'          => 'products',
 	'taxonomy'           => 'product_cat',
-  'child_of'           => '28',
-  //'title_li'  => '',
+  'child_of'           => '28',//показывать подкатегории категории с id28
+  'hide_empty'         => 0, //показывать и пустые категории
   'separator'          => '', 
   'style' => '',
   
@@ -134,8 +133,9 @@ echo '</ul>';
 'post_type' => 'product',
 'posts_per_page' => get_field('products_per_page'),
 'taxonomy'   => 'product_cat',
-'product_cat' => 'extras',
+'product_cat' => 'beverages',
 'orderby' => 'menu_order',
+
 'order' => 'ASC',
 ));
 
@@ -147,13 +147,15 @@ while ( $loop->have_posts() ): $loop->the_post(); ?>
           </div>
 
           <div class="quantity">
-            <input class="extras" type="number" min="0" max="9" data-id="${item.id}" step="1" value="${valIn}">
+            <input class="extras" type="number" min="0" max="9" data-id="2" step="1" value="1">
             <div class="quantity-nav">
             <div class="quantity-button quantity-up">
-            <img src="img/plus.svg" alt=""></div><div class="quantity-button quantity-down"><img src="img/minus.svg" alt=""></div></div>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/plus.svg" alt="plus"></div>
+            <div class="quantity-button quantity-down"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/minus.svg" alt="minus">
+          </div></div>
           </div>
         </div>
-        <div class="menu-dop__value"><span class="value" data-price="${item.price}"><?php woocommerce_template_loop_price(); ?></div>
+        <div class="menu-dop__value"><span class="value" data-price="2"><?php woocommerce_template_loop_price(); ?></div>
       </li><?php endwhile; wp_reset_postdata(); ?>
       </ul>
     </div>
