@@ -155,6 +155,16 @@ function fix_svg_mime_type( $data, $file, $filename, $mimes, $real_mime = '' ){
 	return $data;
 }
 
+add_filter ( 'wp_list_categories', 'span_before_link_list_categories' );
+
+function span_before_link_list_categories( $list ) {
+$list = str_replace('href=', 'class="nav__link" href=',$list);
+return $list;
+}
+
+
+
+
 
 //define( 'WPCF7_AUTOP', false );
 add_filter('wpcf7_autop_or_not', '__return_false');

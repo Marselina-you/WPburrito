@@ -3,43 +3,57 @@
 get_header(); ?>
 <section class="header-menu">
   <div class="container">
+ 
     <nav class="header-menu-nav" title="">
-      <ul class="header-menu-nav__list list-reset">
-        <li class="header-menu-nav__item"><a href="#" class="nav__link">Appetizers</a></li>
+   
+      <?php $args = array(
+	'post_type'          => 'products',
+	'taxonomy'           => 'product_cat',
+  'product_cat'           => 'menu',
+  'separator'          => '<li class="header-menu-nav__item">', 
+  'style' => '',
+	
+  
+); 
+echo '<ul class="header-menu-nav__list list-reset">';
+wp_list_categories( $args );
+echo '</ul>';
+?>
+        <!--<li class="header-menu-nav__item"><a href="#" class="nav__link">Appetizers</a></li>
         <li class="header-menu-nav__item"><a href="#" class="nav__link">Main Dishes</a></li>
-        <li class="header-menu-nav__item"><a href="#" class="nav__link">Desserts</a></li>
-      </ul>
+        <li class="header-menu-nav__item"><a href="#" class="nav__link">Desserts</a></li>-->
+    
     </nav>
   </div>
 </section>
 <section class="menu">
   <div class="container menu__container">
     <h2 class="menu__title">Appetizers</h2>
-    <?php
-global $post;
-
-$myposts = get_posts([ 
-	'numberposts' => -1,
-	
-]);
-
-if( $myposts ){
-	foreach( $myposts as $post ){
-		setup_postdata( $post );
-		?>
+    <?php $loop = new WP_Query( array(
+'post_type' => 'product',
+'posts_per_page' => get_field('products_per_page'),
+'taxonomy'   => 'product_cat',
+'product_cat' => 'appetizers',
+'orderby' => 'menu_order',
+'order' => 'ASC',
+));  
+while ( $loop->have_posts() ): $loop->the_post(); ?>
 		 <div class="menu__content">
+
       <div class="menu-content-image">
-        <?php the_post_thumbnail(); ?>
       
-        <!--<img src="/assets/img/tapas.png" alt="tapas with bacon">-->
+      <?php the_post_thumbnail(); ?>
+       
       </div>
       <div class="menu-content-text">
         <h3 class="menu-content-text__title"><span>
-        <?php the_title(); ?>
-        </span>&nbsp;<span class="menu-content-text__value">10 $</span></h3>
-        <div class="menu-content-text__components"><?php the_content(); ?></div>
-        <div class="menu-content-text__calories">350 Kk</div>
-        <div class="menu-content-text__weight">500 g</div>
+        <a href="<?php the_permalink(); ?>">
+        <?php the_title(); ?></a>
+        </span>&nbsp;<span class="menu-content-text__value">
+<?php woocommerce_template_loop_price(); ?></span></h3>
+        <div class="menu-content-text__components"></div>
+        <div class="menu-content-text__calories"> Kk</div>
+        <div class="menu-content-text__weight"><?php the_content(); ?> g</div>
         <button class="btn-reset btn btn--order menu-content-text__btn">order</button>
         <div class="add-plus add-plus--none">
           <div class="add-plus__minus">
@@ -66,13 +80,8 @@ if( $myposts ){
         </div>
       </div>
     </div>
-		<?php 
-	}
-}
-
-
-wp_reset_postdata(); // Сбрасываем $post
-?>
+    <?php endwhile; wp_reset_postdata(); ?>
+		
    
     
     <nav class="header-menu-nav header-menu-nav--bottom" title="">
@@ -87,7 +96,57 @@ wp_reset_postdata(); // Сбрасываем $post
     <hr width="50%">
 </div>
 </section>
+<section class="menu-dop">
+  <div class="container menu-dop__container">
+    <div class="menu-dop__left">
+      <nav class="header-menu-nav menu-dop__header" title="">
+        <ul class="header-menu-nav__list list-reset">
+          <li class="header-menu-nav__item"><a href="#" class="nav__link">Extras</a></li>
+          <li class="header-menu-nav__item"><a href="#" class="nav__link">Beverages</a></li>
+        </ul>
+      </nav>
+     
+      <ul class="list-reset menu-dop__list">
+      <?php $loop = new WP_Query( array(
+'post_type' => 'product',
+'posts_per_page' => get_field('products_per_page'),
+'taxonomy'   => 'product_cat',
+'product_cat' => 'extras',
+'orderby' => 'menu_order',
+'order' => 'ASC',
+));
 
+while ( $loop->have_posts() ): $loop->the_post(); ?>
+      <li class="menu-dop__item">
+        <div class="menu-dop__top">
+          <div class="menu-dop__name-wrap">
+            <div class="menu-dop__name"> <?php the_title(); ?></div>
+          </div>
+
+          <div class="quantity">
+            <input class="extras" type="number" min="0" max="9" data-id="${item.id}" step="1" value="${valIn}">
+            <div class="quantity-nav">
+            <div class="quantity-button quantity-up">
+            <img src="img/plus.svg" alt=""></div><div class="quantity-button quantity-down"><img src="img/minus.svg" alt=""></div></div>
+          </div>
+        </div>
+        <div class="menu-dop__value"><span class="value" data-price="${item.price}"><?php woocommerce_template_loop_price(); ?><span>  €</span></div>
+      </li><?php endwhile; wp_reset_postdata(); ?>
+      </ul>
+    </div>
+
+
+
+
+
+  </div>
+  <div class="menu-block-btn">
+    <button class="btn btn-reset menu__btn btn--stroke" title="самовывоз">Order for Pick-up</button>
+
+    <button class="btn btn-reset menu__btn btn--stroke" title="доставка">Order for Delivery</button>
+  </div>
+
+</section>
 <?php 
 get_template_part( 'tpl-parts/address' );
 //$args = 'Какая-то строка';

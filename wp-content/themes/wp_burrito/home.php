@@ -9,14 +9,13 @@ Template Name: home
 get_header(); ?>
 
 
-     <!---->
-     <div class="section hero">
+     <!-- <div class="section hero">
   <div class="swiper mainSlider">
     <div class="swiper-wrapper">
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-6.jpg);">
         <div class="order-swiper-slide__content wow animate__fadeIn" data-wow-duration="2s">
           <div class="swiper-slide__logo">
-          <?php the_custom_logo(); ?>
+          <?php //the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
@@ -29,7 +28,7 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-1.jpg);">
         <div class="order-swiper-slide__content">
           <div class="swiper-slide__logo">
-          <?php the_custom_logo(); ?>
+          <?php //the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
@@ -42,7 +41,7 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-2.jpg);">
         <div class="order-swiper-slide__content">
           <div class="swiper-slide__logo">
-          <?php the_custom_logo(); ?>
+          <?php //the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
@@ -55,7 +54,7 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-3.jpg);">
         <div class="order-swiper-slide__content">
           <div class="swiper-slide__logo">
-          <?php the_custom_logo(); ?>
+          <?php //the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
@@ -69,11 +68,11 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-4.jpg);">
         <div class="order-swiper-slide__content">
           <div class="swiper-slide__logo">
-            <?php the_custom_logo(); ?>
+            <?php //the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
-          <img class="header-logo__decor" src="<?php echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
+          <img class="header-logo__decor" src="<?php //echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
           </div>
           <div class="order-swiper-slide__subtitle">chilebar</div>
         </div>
@@ -81,7 +80,7 @@ get_header(); ?>
       <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-5.jpg);">
         <div class="order-swiper-slide__content">
           <div class="swiper-slide__logo">
-          <?php the_custom_logo(); ?>
+          <?php //the_custom_logo(); ?>
           </div>
           <div class="order-swiper-slide__title">Burrito</div>
           <div class="order-swiper-slide__decor">
@@ -103,7 +102,98 @@ get_header(); ?>
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
+<?php
+
+
+$loop = new WP_Query( array(
+'post_type' => 'product',
+'posts_per_page' => get_field('products_per_page'),
+'category_cat' => 'menu',
+'orderby' => 'menu_order',
+'order' => 'ASC',
+));
+
+while ( $loop->have_posts() ): $loop->the_post(); ?>
+<div <?php post_class("inloop-product"); ?>>
+<div class="row">
+<div class="col-sm-4">
+<?php the_post_thumbnail("thumbnail-215x300"); ?>
+</div>
+<div class="col-sm-8">
+<h4>
+<a href="<?php the_permalink(); ?>">
+<?php the_title(); ?>
+</a>
+</h4>
+<?php the_content(); ?>
+<p class="price">
+<?php _e("Price:","examp"); ?>
+<?php woocommerce_template_loop_price(); ?>
+</p>
+<?php woocommerce_template_loop_add_to_cart(); ?>
+</div>
+</div>
+</div>
+
+<?php endwhile; wp_reset_postdata(); ?>
+<?php
+  
+  $args = array(
+	
+	'taxonomy'           => 'product_cat',
+	'post_type'          => 'products',
+  'show_option_all'    => '',
+	'show_option_none'   => __('No categories'),
+	'orderby'            => 'name',
+	'order'              => 'ASC',
+	'style'              => 'list',
+	'show_count'         => 0,
+	'hide_empty'         => 1,
+	'use_desc_for_title' => 0,
+	'child_of'           => 0,
+	'feed'               => '',
+	'feed_type'          => '',
+	'feed_image'         => '',
+	'exclude'            => '',
+	'exclude_tree'       => '',
+	'include'            => '',
+	'hierarchical'       => true,
+	'title_li'           => __( 'Categories' ),
+	'number'             => NULL,
+	'echo'               => 1,
+	'depth'              => 0,
+	'current_category'   => 0,
+	'pad_counts'         => 0,
+	
+	'walker'             => 'Walker_Category',
+	'hide_title_if_empty' => false,
+	'separator'          => '<br />',
+  //'parent'             => '0',
+  'category' => 'menu',
+  
+);
+echo '<ul>';
+	wp_list_categories( $args );
+echo '</ul>';
+?>
+
+
+  
+  <?php 
+
+
+
+
+
+  //echo $product->get_price(); 
+  //echo do_shortcode('[products limit="5" columns="5" paginate="true"]') 
+  //echo do_shortcode('[product_category category="main-dishes"]'); ?>
+
+
+
+
+
   <div class="hero__container container">
     <ul class="hero__nav list-reset">
       <li class="hero__nav--left"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/left.svg" alt=""></li>
@@ -138,7 +228,7 @@ get_header(); ?>
 
       <section class="calling">
   <div class="container">
-    <h2 class="calling__title wow animate__zoomInDown" data-wow-duration="1.5s" data-wow-offset="200">Feel Mexico</h2>
+    <h2 class="calling__title wow animate__zoomInDown" data-wow-duration="1.5s" data-wow-offset="200"><?php the_field('call'); ?></h2>
   </div>
 </section>
 
@@ -271,10 +361,8 @@ get_header(); ?>
       <section class="quote quote--second">
   <div class="container quote__container">
     <div class="quote__content quote__content--second wow animate__fadeInLeft" data-wow-offset="200">
-      <quote class="quote__text">«Burrito ignites a hot flame in you, it collapses
-        on you like lava, with its most powerful music,
-        a sea of tequila and devilish food»</quote>
-      <div class="quote__autor">Penelope Cruz, the visitor</div>
+      <quote class="quote__text">«<?php the_field('quote_2_content');?>»</quote>
+      <div class="quote__autor"><?php the_field('quote_2_author');?></div>
     </div>
   </div>
 </section>
@@ -284,34 +372,7 @@ get_template_part( 'tpl-parts/address' );
 //$args = 'Какая-то строка';
 //get_template_part( 'tpl-parts/address', null, $args );
 ?>
-<form action="#" class="reservation-form wow animate__bounce" data-wow-offset="300">
-  <label class="reservation-form-field">
-          <select class="reservation-form-field__select reservation-form-field--data">
-            <option class="reservation-form-field__option">July 11</option>
-            <option>July 12</option>
-            <option>July 13</option>
-            <option>July 14</option>
-          </select>
-        </label>
-        <label class="reservation-form-field">
-          <select class="reservation-form-field__select reservation-form-field--hour">
-            <option class="reservation-form-field__option">20.00</option>
-            <option>21.00</option>
-            <option>22.00</option>
-            <option>23.00</option>
-          </select>
-        </label>
 
-        <label class="reservation-form-field">
-          <select class="reservation-form-field__select reservation-form-field--people">
-            <option class="reservation-form-field__option">2 people</option>
-            <option>3 people</option>
-            <option>4 people</option>
-            <option>5 people</option>
-          </select>
-        </label>
-        <button class="reservation-form__btn btn btn--primary">order</button>
-</form>
 <?php
 get_footer(); ?>
 
