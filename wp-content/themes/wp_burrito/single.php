@@ -1,5 +1,31 @@
 <?php
 get_header(); 
+
+?><section class="header-menu">
+  <div class="container">
+ 
+    <nav class="header-menu-nav" title="">
+   
+      <?php $args = array(
+	'post_type'          => 'products',
+	'taxonomy'           => 'product_cat',
+    'child_of'           => '27',
+    'separator'          => '', 
+    'style' => '',
+  
+	
+  
+); 
+echo '<ul class="header-menu-nav__list list-reset">';
+wp_list_categories( $args );
+echo '</ul>';
+?>
+</nav>
+  </div>
+</section>
+<section class="menu">
+  <div class="container menu__container">
+<?php
 if( have_posts() ){
 	while( have_posts() ){
 		the_post();
@@ -7,8 +33,8 @@ if( have_posts() ){
 		?>
          <div class="menu__content">
       <div class="menu-content-image">
-      <?php get_the_post_thumbnail(); ?>
-      
+        <?php //the_content('', true); ?>
+        <img src="<?php echo the_post_thumbnail_url(600, 'thumbnail'); ?>" alt="">
       </div>
       <div class="menu-content-text">
         <h3 class="menu-content-text__title"> <span>
@@ -42,6 +68,8 @@ if( have_posts() ){
         </div>
         </div>
     </div>
+    </section>
+    </div>
        
    <?php } 
    }
@@ -51,4 +79,5 @@ if( have_posts() ){
 }
 ?>
 <?php
+get_template_part( 'tpl-parts/address' );
 get_footer(); ?>

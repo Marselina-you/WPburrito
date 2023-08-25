@@ -45,10 +45,12 @@ while ( $loop->have_posts() ): $loop->the_post(); ?>
      <?php global $post;
 
 $category = get_the_terms( $post->ID, 'product_cat' );
+$cat_link = get_category_link($category[0]);
 
 //$nterms = get_the_terms( $post->ID, 'product_tag'  );
 //echo $category[0]->name;
 $links = get_the_terms( get_the_ID(), 'product_cat' );
+
 //echo get_term_link( $terms[0] );
 
 foreach ($category  as $term  ) {
@@ -71,7 +73,7 @@ break;
       
       </div>
       <div class="menu-content-text">
-        <a href="<?php echo get_term_link( $links[0] );?>"><?php  echo $product_cat_name; ?><?php  echo $product_cat_id; ?></a>
+        <a href="<?php echo $cat_link; ?>"><?php  echo $product_cat_name; ?><?php  echo $product_cat_id; ?></a>
       
         <h3 class="menu-content-text__title"><span>
         <a href="<?php the_permalink(); ?>">

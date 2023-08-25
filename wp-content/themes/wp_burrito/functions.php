@@ -162,7 +162,7 @@ function rs_show_weights() {
     $weight = $product->get_weight();
 
     if ( $product->has_weight() ) {
-        echo '<div class="product-meta">' . $weight . get_option('woocommerce_weight_unit') . '</div></br>';
+        echo  $weight . get_option('woocommerce_weight_unit');
     }
 }
 add_action( 'show_product_short_description', 'show_product_short_description' );
@@ -187,13 +187,14 @@ function display_custom_product_attributes_on_loop() {
 
     $value1 = $product->get_attribute('calories');
 	if ( ! empty($value1) ) {
-		echo '<p>';
+		
        $attributes = array(); // Initializing
 
         if ( ! empty($value1) ) {
             $attributes[] =    $value1 .' ' . __("Kk") ;
         }
-echo implode(  $attributes ) . '</p>' ;
+echo implode(  $attributes )  ;
+//echo  $attributes ;
     }
 }
 

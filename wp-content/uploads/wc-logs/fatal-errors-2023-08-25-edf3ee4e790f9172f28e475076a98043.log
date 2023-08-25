@@ -48,3 +48,211 @@ Stack trace:
 #4 {main}
   thrown in D:\OSPanel\domains\WPburrito\wp-includes\post.php on line 7628
 
+2023-08-25T08:40:34+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(15): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T08:44:16+00:00 CRITICAL Uncaught Error: Call to undefined function gt_set_post_view() in D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php:3
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include()
+#1 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#2 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#3 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php on line 3
+
+2023-08-25T09:44:43+00:00 CRITICAL syntax error, unexpected '}', expecting end of file in D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php on line 77
+
+2023-08-25T10:37:50+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T10:38:58+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T10:40:11+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T10:41:27+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T10:58:03+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T11:10:10+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T11:14:59+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T11:22:36+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T11:23:03+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T11:23:52+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T11:26:03+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T11:30:54+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T11:39:53+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T11:40:58+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T11:41:12+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T11:43:42+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+
+2023-08-25T13:20:29+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1404): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(41): woocommerce_template_loop_price()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#4 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...')
+#6 {main}
+  thrown in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\loop\price.php on line 25
+

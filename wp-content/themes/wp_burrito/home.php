@@ -4,154 +4,50 @@ Template Name: home
 
 */
 
-?>
-<?php
+
 get_header(); ?>
 
 
-     <!-- <div class="section hero">
+   <div class="section hero">
   <div class="swiper mainSlider">
+    
     <div class="swiper-wrapper">
-      <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-6.jpg);">
-        <div class="order-swiper-slide__content wow animate__fadeIn" data-wow-duration="2s">
-          <div class="swiper-slide__logo">
-          <?php //the_custom_logo(); ?>
-          </div>
-          <div class="order-swiper-slide__title">Burrito</div>
-          <div class="order-swiper-slide__decor">
-            <img class="header-logo__decor" src="<?php echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
-          </div>
-          <div class="order-swiper-slide__subtitle">chilebar</div>
-
-        </div>
-      </div>
-      <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-1.jpg);">
-        <div class="order-swiper-slide__content">
-          <div class="swiper-slide__logo">
-          <?php //the_custom_logo(); ?>
-          </div>
-          <div class="order-swiper-slide__title">Burrito</div>
-          <div class="order-swiper-slide__decor">
-            <img class="header-logo__decor" src="<?php echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
-          </div>
-          <div class="order-swiper-slide__subtitle">chilebar</div>
-
-        </div>
-      </div>
-      <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-2.jpg);">
-        <div class="order-swiper-slide__content">
-          <div class="swiper-slide__logo">
-          <?php //the_custom_logo(); ?>
-          </div>
-          <div class="order-swiper-slide__title">Burrito</div>
-          <div class="order-swiper-slide__decor">
-            <img class="header-logo__decor" src="<?php echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
-          </div>
-          <div class="order-swiper-slide__subtitle">chilebar</div>
-
-        </div>
-      </div>
-      <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-3.jpg);">
-        <div class="order-swiper-slide__content">
-          <div class="swiper-slide__logo">
-          <?php //the_custom_logo(); ?>
-          </div>
-          <div class="order-swiper-slide__title">Burrito</div>
-          <div class="order-swiper-slide__decor">
-            <img class="header-logo__decor" src="<?php echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
-          </div>
-          <div class="order-swiper-slide__subtitle">chilebar</div>
-
-        </div>
-      </div>
-
-      <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-4.jpg);">
-        <div class="order-swiper-slide__content">
-          <div class="swiper-slide__logo">
-            <?php //the_custom_logo(); ?>
-          </div>
-          <div class="order-swiper-slide__title">Burrito</div>
-          <div class="order-swiper-slide__decor">
-          <img class="header-logo__decor" src="<?php //echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
-          </div>
-          <div class="order-swiper-slide__subtitle">chilebar</div>
-        </div>
-      </div>
-      <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-5.jpg);">
-        <div class="order-swiper-slide__content">
-          <div class="swiper-slide__logo">
-          <?php //the_custom_logo(); ?>
-          </div>
-          <div class="order-swiper-slide__title">Burrito</div>
-          <div class="order-swiper-slide__decor">
-            <img class="header-logo__decor" src="<?php echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
-          </div>
-          <div class="order-swiper-slide__subtitle">chilebar</div>
-        </div>
-      </div>
-      <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/slide-1.jpg);">
-        <div class="order-swiper-slide__content">
-          <div class="swiper-slide__logo">
-          <?php the_custom_logo(); ?>
-          </div>
-          <div class="order-swiper-slide__title">Burrito</div>
-          <div class="order-swiper-slide__decor">
-            <img class="header-logo__decor" src="<?php echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
-          </div>
-          <div class="order-swiper-slide__subtitle">chilebar</div>
-        </div>
-      </div>
-    </div>
-  </div>-->
-<?php
-
-
-$loop = new WP_Query( array(
-'post_type' => 'product',
+  <?php  $loop = new WP_Query( array(
+'post_type' => 'post',
 'posts_per_page' => get_field('products_per_page'),
-'category_cat' => 'menu',
+'category' => 'slider',
 'orderby' => 'menu_order',
 'order' => 'ASC',
 ));
 
 while ( $loop->have_posts() ): $loop->the_post(); ?>
-<div <?php post_class("inloop-product"); ?>>
-<div class="row">
-<div class="col-sm-4">
-<?php the_post_thumbnail("thumbnail-215x300"); ?>
-</div>
-<div class="col-sm-8">
-<h4>
-<a href="<?php the_permalink(); ?>">
-<?php the_title(); ?>
-</a>
-</h4>
-<?php the_content(); ?>
-<p class="price">
-<?php _e("Price:","examp"); ?>
+      <div class="order-swiper-slide swiper-slide" style="background-image: url(<?php echo the_post_thumbnail_url(600, 'thumbnail'); ?>">
+     
+      <div class="order-swiper-slide__content wow animate__fadeIn" data-wow-duration="2s">
+          <div class="swiper-slide__logo">
+          <?php  the_custom_logo(); ?> 
+          </div>
+          <div class="order-swiper-slide__title">Burrito</div>
+          <div class="order-swiper-slide__decor">
+            <img class="header-logo__decor" src="<?php echo get_template_directory_uri(); ?>/assets/img/decor.svg" alt="burrito">
+          </div>
+          <div class="order-swiper-slide__subtitle">chilebar</div>
 
-<?php  echo implode( '<br>', $attributes ) . '</p></div>';
-woocommerce_template_loop_price(); ?>
-</p>
-<?php woocommerce_template_loop_add_to_cart(); ?>
-</div>
-</div>
-</div>
+        </div>
+       
+	
+      </div>
+      <?php endwhile; wp_reset_postdata(); ?>
+    
+     
+     
 
-<?php endwhile; wp_reset_postdata(); ?>
+   
+    
+      
+    </div>
+  </div>
 
-
-
-  
-  <?php 
-
-
-
-
-
-  //echo $product->get_price(); 
-  //echo do_shortcode('[products limit="5" columns="5" paginate="true"]') 
-  //echo do_shortcode('[product_category category="main-dishes"]'); ?>
 
 
 
@@ -164,7 +60,12 @@ woocommerce_template_loop_price(); ?>
     </ul>
     <div class="down-wrap">
       <a href="#down" class="down">
-        <svg class="animate__animated animate__fadeInUp animate__infinite animate__slower"><use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/img/sprite.svg#arrows-down"></use></svg>
+      
+      <svg class="animate__animated animate__fadeInUp animate__infinite animate__slower" width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.3067 23.8879C10.7049 23.8485 11.0819 23.688 11.3847 23.4276L19.524 16.451C19.9343 16.1225 20.1932 15.641 20.2417 15.1187C20.2901 14.5963 20.1251 14.077 19.7845 13.6773C19.4423 13.2791 18.9548 13.0354 18.4309 13.0036C17.9071 12.9718 17.3923 13.1535 17.0047 13.5077L10.125 19.4065L3.24529 13.5077C2.8577 13.1535 2.34295 12.9718 1.81908 13.0036C1.29521 13.0354 0.807705 13.2791 0.465542 13.6773C0.124886 14.077 -0.040146 14.5963 0.00830261 15.1187C0.0567513 15.641 0.315649 16.1225 0.725963 16.451L8.86534 23.4276C9.26351 23.7698 9.78435 23.9348 10.3067 23.8879Z"/>
+<path d="M10.3067 10.8879C10.7049 10.8485 11.0819 10.688 11.3847 10.4276L19.524 3.45102C19.9343 3.12248 20.1932 2.64104 20.2417 2.11868C20.2901 1.59633 20.1251 1.07704 19.7845 0.677315C19.4423 0.279144 18.9548 0.0353896 18.4309 0.00356854C17.9071 -0.0282258 17.3923 0.153457 17.0047 0.507745L10.125 6.40646L3.24529 0.507745C2.8577 0.153465 2.34295 -0.0282138 1.81908 0.00356854C1.29521 0.0353629 0.807705 0.279121 0.465542 0.677315C0.124886 1.077 -0.040146 1.59633 0.00830261 2.11868C0.0567513 2.64104 0.315649 3.12246 0.725963 3.45102L8.86534 10.4276C9.26351 10.7698 9.78435 10.9348 10.3067 10.8879Z"/>
+</svg>
+        
       </a>
     </div>
   </div>
@@ -173,7 +74,7 @@ woocommerce_template_loop_price(); ?>
   <div class="container reservation__container">
     <div class="reservation__content">
       
-      
+    
 
         <?php 
         echo do_shortcode('[contact-form-7 id="e4c0fec" title="Reservation"]') ?>
