@@ -30,7 +30,7 @@ echo '</ul>';
 </section>
 <section class="menu">
   <div class="container menu__container">
-    <h2 class="menu__title">Appetizers</h2>
+  <h2 class="menu__title">Appetizers</h2>
     <?php $loop = new WP_Query( array(
 'post_type' => 'product',
 'posts_per_page' => get_field('products_per_page'),
@@ -38,21 +38,47 @@ echo '</ul>';
 'product_cat' => 'appetizers',
 'orderby' => 'menu_order',
 'order' => 'ASC',
-));  
+)); 
+
 while ( $loop->have_posts() ): $loop->the_post(); ?>
 		 <div class="menu__content">
+     <?php global $post;
+
+$category = get_the_terms( $post->ID, 'product_cat' );
+
+//$nterms = get_the_terms( $post->ID, 'product_tag'  );
+//echo $category[0]->name;
+$links = get_the_terms( get_the_ID(), 'product_cat' );
+//echo get_term_link( $terms[0] );
+
+foreach ($category  as $term  ) {
+
+$product_cat_id = $term->term_id;
+
+$product_cat_name = $term->name;
+
+
+break;
+
+}
+
+
+?>
 
       <div class="menu-content-image">
       
       <?php the_post_thumbnail(); ?>
-       
+      
       </div>
       <div class="menu-content-text">
+        <a href="<?php echo get_term_link( $links[0] );?>"><?php  echo $product_cat_name; ?><?php  echo $product_cat_id; ?></a>
+      
         <h3 class="menu-content-text__title"><span>
         <a href="<?php the_permalink(); ?>">
+        
         <?php the_title(); ?></a>
         </span>&nbsp;<span class="menu-content-text__value"><?php woocommerce_template_loop_price(); ?></span></h3>
-        <div class="menu-content-text__components"><?php  do_action( 'show_product_short_description' ); ?></div>
+        <p class="menu-content-text__components"><?php  do_action( 'show_product_short_description' ); ?></p>
         <div class="menu-content-text__calories"><?php do_action( 'display_custom_product_attributes_on_loop' ); ?></div>
         <div class="menu-content-text__weight"><?php do_action( 'woocommerce_after_shop_loop'); ?></div>
         <button class="btn-reset btn btn--order menu-content-text__btn">order</button>
@@ -106,73 +132,9 @@ echo '</ul>';
     <hr width="50%">
 </div>
 </section>
-<section class="menu-dop">
-  <div class="container menu-dop__container">
-    <div class="menu-dop__left">
-      <nav class="header-menu-nav menu-dop__header" title="">
-      <?php $args = array(
-	'post_type'          => 'products',
-	'taxonomy'           => 'product_cat',
-  'child_of'           => '28',//показывать подкатегории категории с id28
-  'hide_empty'         => 0, //показывать и пустые категории
-  'separator'          => '', 
-  'style' => '',
-  
-	
-  
-); 
-echo '<ul class="header-menu-nav__list list-reset">';
-wp_list_categories( $args );
-echo '</ul>';
-?>
-        
-      </nav>
-     
-      <ul class="list-reset menu-dop__list">
-      <?php $loop = new WP_Query( array(
-'post_type' => 'product',
-'posts_per_page' => get_field('products_per_page'),
-'taxonomy'   => 'product_cat',
-'product_cat' => 'beverages',
-'orderby' => 'menu_order',
 
-'order' => 'ASC',
-));
-
-while ( $loop->have_posts() ): $loop->the_post(); ?>
-      <li class="menu-dop__item">
-        <div class="menu-dop__top">
-          <div class="menu-dop__name-wrap">
-            <div class="menu-dop__name"> <?php the_title(); ?></div>
-          </div>
-
-          <div class="quantity">
-            <input class="extras" type="number" min="0" max="9" data-id="2" step="1" value="1">
-            <div class="quantity-nav">
-            <div class="quantity-button quantity-up">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/plus.svg" alt="plus"></div>
-            <div class="quantity-button quantity-down"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/minus.svg" alt="minus">
-          </div></div>
-          </div>
-        </div>
-        <div class="menu-dop__value"><span class="value" data-price="2"><?php woocommerce_template_loop_price(); ?></div>
-      </li><?php endwhile; wp_reset_postdata(); ?>
-      </ul>
-    </div>
-
-
-
-
-
-  </div>
-  <div class="menu-block-btn">
-    <button class="btn btn-reset menu__btn btn--stroke" title="самовывоз">Order for Pick-up</button>
-
-    <button class="btn btn-reset menu__btn btn--stroke" title="доставка">Order for Delivery</button>
-  </div>
-
-</section>
 <?php 
+get_template_part( 'tpl-parts/menu-dop' );
 get_template_part( 'tpl-parts/address' );
 //$args = 'Какая-то строка';
 //get_template_part( 'tpl-parts/address', null, $args );

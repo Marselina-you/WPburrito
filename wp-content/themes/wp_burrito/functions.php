@@ -170,34 +170,30 @@ add_action( 'show_product_short_description', 'show_product_short_description' )
 function show_product_short_description() {
 
 	global $product;
-
+	
 	if ( $tmp_desc = $product->get_short_description() ) {
-		echo  $tmp_desc;
+		$str = $tmp_desc;
+		$str = wp_strip_all_tags( $str, 0 );//убираем лишние теги
+		echo    $str ;
 	}
+	
 
 }
+//remove_filter( 'do_action', 'wpautop' );
+
 add_action('display_custom_product_attributes_on_loop', 'display_custom_product_attributes_on_loop' );
 function display_custom_product_attributes_on_loop() {
     global $product;
 
     $value1 = $product->get_attribute('calories');
-    
-
-    if ( ! empty($value1) ) {
-
-       
-
-        $attributes = array(); // Initializing
+	if ( ! empty($value1) ) {
+		echo '<p>';
+       $attributes = array(); // Initializing
 
         if ( ! empty($value1) ) {
             $attributes[] =    $value1 .' ' . __("Kk") ;
         }
-
-        
-
-        
-
-        echo implode(  $attributes ) ;
+echo implode(  $attributes ) . '</p>' ;
     }
 }
 
