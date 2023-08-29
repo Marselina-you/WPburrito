@@ -6,7 +6,9 @@ get_header(); ?>
  
     <nav class="header-menu-nav" title="">
    
-      <?php $args = array(
+      <?php 
+  
+      $args = array(
 	'post_type'          => 'products',
 	'taxonomy'           => 'product_cat',
   'child_of'           => '27',
@@ -28,6 +30,7 @@ echo '</ul>';
 </section>
 <section class="menu">
   <div class="container menu__container">
+  <?php echo do_shortcode('[products]'); ?>
   <h2 class="menu__title">Appetizers</h2>
     <?php $loop = new WP_Query( array(
 //'post_type' => 'product',

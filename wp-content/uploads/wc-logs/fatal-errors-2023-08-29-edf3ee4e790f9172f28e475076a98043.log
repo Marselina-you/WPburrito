@@ -198,3 +198,149 @@ Stack trace:
 
 2023-08-29T07:13:53+00:00 CRITICAL syntax error, unexpected '<', expecting end of file in D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php on line 4
 
+2023-08-29T09:27:52+00:00 CRITICAL Uncaught Error: Call to a member function is_on_sale() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1691): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): woocommerce_show_product_sale_flash()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#4 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#5 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\content-single-product.php(43): do_action()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template.php(787): require('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template()
+ в D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php на строке 25
+
+2023-08-29T09:28:58+00:00 CRITICAL Uncaught Error: Call to a member function is_on_sale() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1691): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): woocommerce_show_product_sale_flash()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#4 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#5 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\content-single-product.php(43): do_action()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template.php(787): require('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template()
+ в D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php на строке 25
+
+2023-08-29T09:29:17+00:00 CRITICAL Uncaught Error: Call to a member function get_weight() on string in D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php:162
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): rs_show_weights()
+#1 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#3 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\archive-product.php(81): do_action()
+#4 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(6): wc_get_template()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#8 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma.. в D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php на строке 162
+
+2023-08-29T09:29:25+00:00 CRITICAL Uncaught Error: Call to a member function get_weight() on null in D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php:162
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): rs_show_weights()
+#1 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#3 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\archive-product.php(81): do_action()
+#4 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(6): wc_get_template()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#8 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...' в D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php на строке 162
+
+2023-08-29T09:30:11+00:00 CRITICAL Uncaught Error: Call to a member function get_weight() on null in D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php:162
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): rs_show_weights()
+#1 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#3 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\archive-product.php(81): do_action()
+#4 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(6): wc_get_template()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#8 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...' в D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php на строке 162
+
+2023-08-29T09:30:24+00:00 CRITICAL Uncaught Error: Call to a member function get_weight() on null in D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php:162
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): rs_show_weights()
+#1 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#3 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\archive-product.php(81): do_action()
+#4 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(6): wc_get_template()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#8 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...' в D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php на строке 162
+
+2023-08-29T09:30:53+00:00 CRITICAL Uncaught Error: Call to a member function get_weight() on null in D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php:162
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): rs_show_weights()
+#1 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#3 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\archive-product.php(81): do_action()
+#4 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(6): wc_get_template()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#8 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...' в D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php на строке 162
+
+2023-08-29T09:56:45+00:00 CRITICAL syntax error, unexpected '*', expecting end of file в D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\index.php на строке 4
+
+2023-08-29T09:57:12+00:00 CRITICAL Uncaught Error: Call to a member function get_weight() on null in D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php:162
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): rs_show_weights()
+#1 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#3 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\archive-product.php(81): do_action()
+#4 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include('D:\\OSPanel\\doma...')
+#5 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\index.php(10): wc_get_template()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#8 D:\OSPanel\domains\WPburrito\index.php(17): require('D:\\OSPanel\\doma...' в D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\functions.php на строке 162
+
+2023-08-29T12:13:15+00:00 CRITICAL Uncaught Error: Call to a member function is_on_sale() on string in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1691): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): woocommerce_show_product_sale_flash()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#4 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#5 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(46): do_action()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#8 D:\OSPanel\domains\WPburrito\index.php( в D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php на строке 25
+
+2023-08-29T12:13:22+00:00 CRITICAL Uncaught Error: Call to a member function is_on_sale() on string in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1691): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): woocommerce_show_product_sale_flash()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#4 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#5 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\single.php(46): do_action()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template-loader.php(106): include('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-blog-header.php(19): require_once('D:\\OSPanel\\doma...')
+#8 D:\OSPanel\domains\WPburrito\index.php( в D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php на строке 25
+
+2023-08-29T12:15:10+00:00 CRITICAL Uncaught Error: Call to a member function is_on_sale() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1691): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): woocommerce_show_product_sale_flash()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#4 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#5 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\content-single-product.php(43): do_action()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template.php(787): require('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template()
+#8 D:\OSPane в D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php на строке 25
+
+2023-08-29T12:18:52+00:00 CRITICAL Uncaught Error: Call to a member function is_on_sale() on null in D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php:25
+Stack trace:
+#0 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include()
+#1 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1691): wc_get_template()
+#2 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(310): woocommerce_show_product_sale_flash()
+#3 D:\OSPanel\domains\WPburrito\wp-includes\class-wp-hook.php(334): WP_Hook->apply_filters()
+#4 D:\OSPanel\domains\WPburrito\wp-includes\plugin.php(517): WP_Hook->do_action()
+#5 D:\OSPanel\domains\WPburrito\wp-content\themes\wp_burrito\content-single-product.php(43): do_action()
+#6 D:\OSPanel\domains\WPburrito\wp-includes\template.php(787): require('D:\\OSPanel\\doma...')
+#7 D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template()
+#8 D:\OSPane в D:\OSPanel\domains\WPburrito\wp-content\plugins\woocommerce\templates\single-product\sale-flash.php на строке 25
+

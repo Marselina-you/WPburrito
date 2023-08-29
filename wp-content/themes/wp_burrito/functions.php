@@ -154,17 +154,7 @@ function fix_svg_mime_type( $data, $file, $filename, $mimes, $real_mime = '' ){
 
 	return $data;
 }
-add_action( 'woocommerce_after_shop_loop', 'rs_show_weights', 9 );
 
-function rs_show_weights() {
-
-    global $product;
-    $weight = $product->get_weight();
-
-    if ( $product->has_weight() ) {
-        echo  $weight . get_option('woocommerce_weight_unit');
-    }
-}
 add_action( 'show_product_short_description', 'show_product_short_description' );
 
 function show_product_short_description() {
