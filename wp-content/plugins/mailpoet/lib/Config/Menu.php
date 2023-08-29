@@ -6,8 +6,10 @@ if (!defined('ABSPATH')) exit;
 
 
 use MailPoet\AdminPages\Pages\Automation;
+use MailPoet\AdminPages\Pages\AutomationAnalytics;
 use MailPoet\AdminPages\Pages\AutomationEditor;
 use MailPoet\AdminPages\Pages\AutomationTemplates;
+use MailPoet\AdminPages\Pages\DynamicSegments;
 use MailPoet\AdminPages\Pages\ExperimentalFeatures;
 use MailPoet\AdminPages\Pages\FormEditor;
 use MailPoet\AdminPages\Pages\Forms;
@@ -17,8 +19,8 @@ use MailPoet\AdminPages\Pages\Landingpage;
 use MailPoet\AdminPages\Pages\Logs;
 use MailPoet\AdminPages\Pages\NewsletterEditor;
 use MailPoet\AdminPages\Pages\Newsletters;
-use MailPoet\AdminPages\Pages\Segments;
 use MailPoet\AdminPages\Pages\Settings;
+use MailPoet\AdminPages\Pages\StaticSegments;
 use MailPoet\AdminPages\Pages\Subscribers;
 use MailPoet\AdminPages\Pages\SubscribersExport;
 use MailPoet\AdminPages\Pages\SubscribersImport;
@@ -42,6 +44,7 @@ class Menu {
   const SUBSCRIBERS_PAGE_SLUG = 'mailpoet-subscribers';
   const IMPORT_PAGE_SLUG = 'mailpoet-import';
   const EXPORT_PAGE_SLUG = 'mailpoet-export';
+  const LISTS_PAGE_SLUG = 'mailpoet-lists';
   const SEGMENTS_PAGE_SLUG = 'mailpoet-segments';
   const SETTINGS_PAGE_SLUG = 'mailpoet-settings';
   const HELP_PAGE_SLUG = 'mailpoet-help';
@@ -52,6 +55,7 @@ class Menu {
   const LOGS_PAGE_SLUG = 'mailpoet-logs';
   const AUTOMATIONS_PAGE_SLUG = 'mailpoet-automation';
   const AUTOMATION_EDITOR_PAGE_SLUG = 'mailpoet-automation-editor';
+  const AUTOMATION_ANALYTICS_PAGE_SLUG = 'mailpoet-automation-analytics';
   const AUTOMATION_TEMPLATES_PAGE_SLUG = 'mailpoet-automation-templates';
 
   const LANDINGPAGE_PAGE_SLUG = 'mailpoet-landingpage';
@@ -177,14 +181,14 @@ class Menu {
       'MailPoet',
       AccessControl::PERMISSION_ACCESS_PLUGIN_ADMIN,
       self::MAIN_PAGE_SLUG,
-      null,
+      '',
       self::ICON_BASE64_SVG,
       30
     );
 
     // Welcome wizard page
     $this->wp->addSubmenuPage(
-      null,
+      '',
       $this->setPageTitle(__('Welcome Wizard', 'mailpoet')),
       esc_html__('Welcome Wizard', 'mailpoet'),
       AccessControl::PERMISSION_ACCESS_PLUGIN_ADMIN,
@@ -197,7 +201,7 @@ class Menu {
 
     // Landingpage
     $this->wp->addSubmenuPage(
-      null,
+      '',
       $this->setPageTitle(__('MailPoet', 'mailpoet')),
       esc_html__('MailPoet', 'mailpoet'),
       AccessControl::PERMISSION_ACCESS_PLUGIN_ADMIN,
@@ -323,14 +327,6 @@ class Menu {
       ]
     );
 
-    // add body class for form editor page
-    $this->wp->addAction('load-' . $formTemplateSelectionEditorPage, function() {
-      $this->wp->addFilter('admin_body_class', function ($classes) {
-        return ltrim($classes . ' block-editor-page');
-      });
-    });
-
-
     // Subscribers page
     $subscribersPage = $this->wp->addSubmenuPage(
       self::MAIN_PAGE_SLUG,
@@ -382,11 +378,36 @@ class Menu {
       ]
     );
 
-    // Segments page
-    $segmentsPage = $this->wp->addSubmenuPage(
+    // Lists page
+    $listsPage = $this->wp->addSubmenuPage(
       self::MAIN_PAGE_SLUG,
       $this->setPageTitle(__('Lists', 'mailpoet')),
       esc_html__('Lists', 'mailpoet'),
+      AccessControl::PERMISSION_MANAGE_SEGMENTS,
+      self::LISTS_PAGE_SLUG,
+      [
+        $this,
+        'lists',
+      ]
+    );
+
+    // add limit per page to screen options
+    $this->wp->addAction('load-' . $listsPage, function() {
+      $this->wp->addScreenOption('per_page', [
+        'label' => _x(
+          'Number of lists per page',
+          'lists per page (screen options)',
+          'mailpoet'
+        ),
+        'option' => 'mailpoet_lists_per_page',
+      ]);
+    });
+
+    // Segments page
+    $segmentsPage = $this->wp->addSubmenuPage(
+      self::MAIN_PAGE_SLUG,
+      $this->setPageTitle(__('Segments', 'mailpoet')),
+      esc_html__('Segments', 'mailpoet'),
       AccessControl::PERMISSION_MANAGE_SEGMENTS,
       self::SEGMENTS_PAGE_SLUG,
       [
@@ -451,7 +472,7 @@ class Menu {
 
     // WooCommerce Setup
     $this->wp->addSubmenuPage(
-      null,
+      '',
       $this->setPageTitle(__('WooCommerce Setup', 'mailpoet')),
       esc_html__('WooCommerce Setup', 'mailpoet'),
       AccessControl::PERMISSION_ACCESS_PLUGIN_ADMIN,
@@ -487,7 +508,7 @@ class Menu {
     $parentSlug = self::MAIN_PAGE_SLUG;
     // Automations menu is hidden when the subscription is part of a bundle and AutomateWoo is active but pages can be accessed directly
     if ($this->wp->isPluginActive('automatewoo/automatewoo.php') && $this->servicesChecker->isBundledSubscription()) {
-      $parentSlug = null;
+      $parentSlug = '';
     }
 
     $automationPage = $this->wp->addSubmenuPage(
@@ -508,6 +529,16 @@ class Menu {
       AccessControl::PERMISSION_MANAGE_AUTOMATIONS,
       self::AUTOMATION_EDITOR_PAGE_SLUG,
       [$this, 'automationEditor']
+    );
+
+    // Automation analytics
+    $this->wp->addSubmenuPage(
+      self::AUTOMATIONS_PAGE_SLUG,
+      $this->setPageTitle(__('Automation Analytics', 'mailpoet')),
+      esc_html__('Automation Analytics', 'mailpoet'),
+      AccessControl::PERMISSION_MANAGE_AUTOMATIONS,
+      self::AUTOMATION_ANALYTICS_PAGE_SLUG,
+      [$this, 'automationAnalytics']
     );
 
     // Automation templates
@@ -579,6 +610,10 @@ class Menu {
     $this->container->get(AutomationEditor::class)->render();
   }
 
+  public function automationAnalytics() {
+    $this->container->get(AutomationAnalytics::class)->render();
+  }
+
   public function experimentalFeatures() {
     $this->container->get(ExperimentalFeatures::class)->render();
   }
@@ -591,8 +626,12 @@ class Menu {
     $this->container->get(Subscribers::class)->render();
   }
 
+  public function lists() {
+    $this->container->get(StaticSegments::class)->render();
+  }
+
   public function segments() {
-    $this->container->get(Segments::class)->render();
+    $this->container->get(DynamicSegments::class)->render();
   }
 
   public function forms() {
@@ -715,7 +754,7 @@ class Menu {
       return false;
     }
     WPFunctions::get()->addSubmenuPage(
-      null,
+      '',
       'MailPoet',
       'MailPoet',
       AccessControl::PERMISSION_ACCESS_PLUGIN_ADMIN,

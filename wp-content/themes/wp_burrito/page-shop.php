@@ -21,9 +21,7 @@ echo '<ul class="header-menu-nav__list list-reset">';
 wp_list_categories( $args );
 echo '</ul>';
 ?>
-        <!--<li class="header-menu-nav__item"><a href="#" class="nav__link">Appetizers</a></li>
-        <li class="header-menu-nav__item"><a href="#" class="nav__link">Main Dishes</a></li>
-        <li class="header-menu-nav__item"><a href="#" class="nav__link">Desserts</a></li>-->
+      
     
     </nav>
   </div>
@@ -32,9 +30,9 @@ echo '</ul>';
   <div class="container menu__container">
   <h2 class="menu__title">Appetizers</h2>
     <?php $loop = new WP_Query( array(
-'post_type' => 'product',
-'posts_per_page' => get_field('products_per_page'),
-'taxonomy'   => 'product_cat',
+//'post_type' => 'product',
+//'posts_per_page' => get_field('products_per_page'),
+//'taxonomy'   => 'product_cat',
 'product_cat' => 'appetizers',
 'orderby' => 'menu_order',
 'order' => 'ASC',

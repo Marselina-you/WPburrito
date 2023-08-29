@@ -11,6 +11,7 @@ use Automattic\Jetpack\Blocks;
 use Automattic\Jetpack\Connection\Initial_State as Connection_Initial_State;
 use Automattic\Jetpack\Connection\Manager as Connection_Manager;
 use Automattic\Jetpack\Constants;
+use Automattic\Jetpack\Current_Plan as Jetpack_Plan;
 use Automattic\Jetpack\Status;
 use Automattic\Jetpack\Status\Host;
 
@@ -70,6 +71,15 @@ class Jetpack_Gutenberg {
 	 * @var array Site-specific features
 	 */
 	private static $site_specific_features = array();
+
+	/**
+	 * List of deprecated blocks.
+	 *
+	 * @var array List of deprecated blocks.
+	 */
+	private static $deprecated_blocks = array(
+		'jetpack/revue',
+	);
 
 	/**
 	 * Check to see if a minimum version of Gutenberg is available. Because a Gutenberg version is not available in
@@ -502,6 +512,7 @@ class Jetpack_Gutenberg {
 				echo '<link rel="stylesheet" id="jetpack-block-' . esc_attr( $type ) . '" href="' . esc_attr( $view_style ) . '&amp;ver=' . esc_attr( $style_version ) . '" media="all">';
 			} else {
 				wp_enqueue_style( 'jetpack-block-' . $type, $view_style, array(), $style_version );
+				wp_style_add_data( 'jetpack-block-' . $type, 'path', JETPACK__PLUGIN_DIR . $style_relative_path );
 			}
 		}
 	}
@@ -657,11 +668,19 @@ class Jetpack_Gutenberg {
 
 		// AI Assistant
 		$ai_assistant_state = Jetpack_AI_Helper::get_ai_assistance_feature();
+
 		if ( is_wp_error( $ai_assistant_state ) ) {
 			$ai_assistant_state = array(
 				'error-message' => $ai_assistant_state->get_error_message(),
 				'error-code'    => $ai_assistant_state->get_error_code(),
 			);
+		} else {
+			$ai_assistant_state['is-playground-visible'] = Constants::is_true( 'JETPACK_AI_ASSISTANT_PLAYGROUND' );
+		}
+
+		$screen_base = null;
+		if ( function_exists( 'get_current_screen' ) ) {
+			$screen_base = get_current_screen()->base;
 		}
 
 		$initial_state = array(
@@ -674,18 +693,7 @@ class Jetpack_Gutenberg {
 				'is_private_site'               => $status->is_private_site(),
 				'is_coming_soon'                => $status->is_coming_soon(),
 				'is_offline_mode'               => $status->is_offline_mode(),
-				'is_newsletter_feature_enabled' => (
-					/**
-					 * Enable the Paid Newsletters feature in the block editor context.
-					 *
-					 * @module subscriptions
-					 * @since 11.8
-					 *
-					 * @param bool false Enable the Paid Newsletters feature in the block editor context.
-					 */
-					apply_filters( 'jetpack_subscriptions_newsletter_feature_enabled', true )
-					&& class_exists( '\Jetpack_Memberships' )
-				),
+				'is_newsletter_feature_enabled' => class_exists( '\Jetpack_Memberships' ),
 				/**
 				 * Enable the RePublicize UI in the block editor context.
 				 *
@@ -710,6 +718,7 @@ class Jetpack_Gutenberg {
 			'allowedMimeTypes' => wp_get_mime_types(),
 			'siteLocale'       => str_replace( '_', '-', get_locale() ),
 			'ai-assistant'     => $ai_assistant_state,
+			'screenBase'       => $screen_base,
 		);
 
 		if ( Jetpack::is_module_active( 'publicize' ) && function_exists( 'publicize_init' ) ) {
@@ -734,7 +743,7 @@ class Jetpack_Gutenberg {
 		);
 
 		// Adds Connection package initial state.
-		wp_add_inline_script( 'jetpack-blocks-editor', Connection_Initial_State::render(), 'before' );
+		Connection_Initial_State::render_script( 'jetpack-blocks-editor' );
 	}
 
 	/**
@@ -1283,6 +1292,33 @@ class Jetpack_Gutenberg {
 
 			return null;
 		};
+	}
+
+	/**
+	 * Display a message to site editors and roles above when a block is no longer supported.
+	 * This is only displayed on the frontend.
+	 *
+	 * @since 12.3
+	 *
+	 * @param string $block_content The block content.
+	 * @param array  $block         The full block, including name and attributes.
+	 *
+	 * @return string
+	 */
+	public static function display_deprecated_block_message( $block_content, $block ) {
+		if ( in_array( $block['blockName'], self::$deprecated_blocks, true ) ) {
+			if ( current_user_can( 'edit_posts' ) ) {
+				$block_content = self::notice(
+					__( 'This block is no longer supported. Its contents will no longer be displayed to your visitors and as such this block should be removed.', 'jetpack' ),
+					'warning',
+					'jetpack-block-deprecated'
+				);
+			} else {
+				$block_content = '';
+			}
+		}
+
+		return $block_content;
 	}
 }
 

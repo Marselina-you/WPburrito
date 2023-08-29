@@ -237,6 +237,10 @@ class Hooks {
       'woocommerce_product_loop_end',
       [$this->displayFormInWPContent, 'wooProductListDisplay']
     );
+    $this->wp->addAction(
+      'wp_footer',
+      [$this->displayFormInWPContent, 'maybeRenderFormsInFooter']
+    );
   }
 
   public function setupMailer() {
@@ -434,6 +438,12 @@ class Hooks {
       'woocommerce_new_order',
       [$this->hooksWooCommerce, 'updateSubscriberEngagement'],
       7
+    );
+    // See class-wc-order.php, which says this about this action
+    // "Fires when the order progresses from a pending payment status to a paid one"
+    $this->wp->addAction(
+      'woocommerce_order_payment_status_changed',
+      [$this->hooksWooCommerce, 'updateSubscriberLastPurchase']
     );
   }
 

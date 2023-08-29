@@ -4,6 +4,8 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useEffect, useState } from 'react';
 
+export type UpgradeTypeProp = 'vip' | 'default';
+
 export type SiteAIAssistantFeatureEndpointResponseProps = {
 	'has-feature': boolean;
 	'is-over-limit': boolean;
@@ -12,6 +14,8 @@ export type SiteAIAssistantFeatureEndpointResponseProps = {
 	'site-require-upgrade': boolean;
 	'error-message': string;
 	'error-code': string;
+	'is-playground-visible': boolean;
+	'upgrade-type': UpgradeTypeProp;
 };
 
 type AIFeatureProps = {
@@ -22,23 +26,22 @@ type AIFeatureProps = {
 	requireUpgrade: boolean;
 	errorMessage: string;
 	errorCode: string;
+	upgradeType: UpgradeTypeProp;
 };
 
 const NUM_FREE_REQUESTS_LIMIT = 20;
 
+const aiAssistantFeature = window?.Jetpack_Editor_Initial_State?.[ 'ai-assistant' ];
+
 export const AI_Assistant_Initial_State = {
-	hasFeature: window?.Jetpack_Editor_Initial_State?.[ 'ai-assistant' ]?.[ 'has-feature' ] || true,
-	isOverLimit:
-		window?.Jetpack_Editor_Initial_State?.[ 'ai-assistant' ]?.[ 'is-over-limit' ] || false,
-	requestsCount:
-		window?.Jetpack_Editor_Initial_State?.[ 'ai-assistant' ]?.[ 'requests-count' ] || 0,
-	requestsLimit:
-		window?.Jetpack_Editor_Initial_State?.[ 'ai-assistant' ]?.[ 'requests-limit' ] ||
-		NUM_FREE_REQUESTS_LIMIT,
-	requireUpgrade:
-		window?.Jetpack_Editor_Initial_State?.[ 'ai-assistant' ]?.[ 'site-require-upgrade' ] || false,
-	errorMessage: window?.Jetpack_Editor_Initial_State?.[ 'ai-assistant' ]?.[ 'error-message' ] || '',
-	errorCode: window?.Jetpack_Editor_Initial_State?.[ 'ai-assistant' ]?.[ 'error-code' ],
+	hasFeature: !! aiAssistantFeature?.[ 'has-feature' ],
+	isOverLimit: !! aiAssistantFeature?.[ 'is-over-limit' ],
+	requestsCount: aiAssistantFeature?.[ 'requests-count' ] || 0,
+	requestsLimit: aiAssistantFeature?.[ 'requests-limit' ] || NUM_FREE_REQUESTS_LIMIT,
+	requireUpgrade: !! aiAssistantFeature?.[ 'site-require-upgrade' ],
+	errorMessage: aiAssistantFeature?.[ 'error-message' ] || '',
+	errorCode: aiAssistantFeature?.[ 'error-code' ],
+	upgradeType: aiAssistantFeature?.[ 'upgrade-type' ] || 'default',
 };
 
 export async function getAIFeatures(): Promise< AIFeatureProps > {
@@ -55,6 +58,7 @@ export async function getAIFeatures(): Promise< AIFeatureProps > {
 			requireUpgrade: !! response[ 'site-require-upgrade' ],
 			errorMessage: response[ 'error-message' ],
 			errorCode: response[ 'error-code' ],
+			upgradeType: response[ 'upgrade-type' ],
 		};
 	} catch ( error ) {
 		console.error( error ); // eslint-disable-line no-console
@@ -68,5 +72,8 @@ export default function useAIFeature() {
 		getAIFeatures().then( setData );
 	}, [] );
 
-	return data;
+	return {
+		...data,
+		refresh: () => getAIFeatures().then( setData ),
+	};
 }

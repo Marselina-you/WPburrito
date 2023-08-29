@@ -1,6 +1,7 @@
 {
 	"production": [
 		"ai-assistant",
+		"ai-assistant-plugin",
 		"blogging-prompt",
 		"business-hours",
 		"button",
@@ -30,7 +31,6 @@
 		"recurring-payments",
 		"related-posts",
 		"repeat-visitor",
-		"revue",
 		"send-a-message",
 		"whatsapp-button",
 		"seo",
@@ -42,29 +42,31 @@
 		"story",
 		"subscriptions",
 		"tiled-gallery",
+		"tock",
 		"videopress",
 		"wordads",
 		"payments-intro",
 		"post-publish-qr-post-panel",
 		"payment-buttons",
 		"site-editor-snackbars",
-		"videopress/video"
+		"videopress/video",
+		"ai-assistant-support",
+		"ai-assistant-form-support"
 	],
 	"beta": [
 		"ai-chat",
 		"amazon",
 		"author-recommendation",
-		"conversation",
-		"dialogue",
 		"google-docs-embed",
 		"launchpad-save-modal",
-		"post-publish-promote-post-panel",
 		"recipe",
 		"v6-video-frame-poster",
-		"videopress/video-chapters"
+		"videopress/video-chapters",
+		"paywall"
 	],
-	"experimental": [ "ai-image", "ai-paragraph", "anchor-fm" ],
+	"experimental": [ "ai-image", "ai-paragraph" ],
 	"no-post-editor": [
+		"ai-assistant",
 		"business-hours",
 		"button",
 		"calendly",
@@ -83,10 +85,10 @@
 		"rating-star",
 		"related-posts",
 		"repeat-visitor",
-		"revue",
 		"simple-payments",
 		"slideshow",
 		"tiled-gallery",
+		"tock",
 		"videopress",
 		"wordads"
 	]

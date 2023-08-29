@@ -28,19 +28,31 @@ class Jetpack_Memberships {
 	 * @var string
 	 */
 	public static $post_type_plan = 'jp_mem_plan';
+
 	/**
 	 * Option that will store currently set up account (Stripe etc) id for memberships.
 	 *
+	 *  TODO: remove
+	 *
+	 * @deprecated
 	 * @var string
 	 */
 	public static $connected_account_id_option_name = 'jetpack-memberships-connected-account-id';
+
+	/**
+	 * Option that will toggle account enabled for memberships (i.e. Stripe is
+	 * configured, etc. ).
+	 *
+	 * @var string
+	 */
+	public static $has_connected_account_option_name = 'jetpack-memberships-has-connected-account';
 
 	/**
 	 * Post meta that will store the level of access for newsletters
 	 *
 	 * @var string
 	 */
-	public static $newsletter_access_level_meta_name = \Automattic\Jetpack\Extensions\Subscriptions\META_NAME_FOR_POST_LEVEL_ACCESS_SETTINGS;
+	public static $post_access_level_meta_name = \Automattic\Jetpack\Extensions\Subscriptions\META_NAME_FOR_POST_LEVEL_ACCESS_SETTINGS;
 
 	/**
 	 * Button block type to use.
@@ -142,11 +154,14 @@ class Jetpack_Memberships {
 	private static function get_plan_property_mapping() {
 		$meta_prefix = 'jetpack_memberships_';
 		$properties  = array(
-			'price'    => array(
+			'price'           => array(
 				'meta' => $meta_prefix . 'price',
 			),
-			'currency' => array(
+			'currency'        => array(
 				'meta' => $meta_prefix . 'currency',
+			),
+			'site_subscriber' => array(
+				'meta' => $meta_prefix . 'site_subscriber',
 			),
 		);
 		return $properties;
@@ -279,7 +294,7 @@ class Jetpack_Memberships {
 	 */
 	public function should_render_button_preview( $block ) {
 		$user_can_edit              = static::user_can_edit();
-		$requires_stripe_connection = ! static::get_connected_account_id();
+		$requires_stripe_connection = ! static::has_connected_account();
 
 		$jetpack_ready = ! self::is_enabled_jetpack_recurring_payments();
 
@@ -425,19 +440,43 @@ class Jetpack_Memberships {
 	/**
 	 * Get the id of the connected payment acount (Stripe etc).
 	 *
-	 * @return int|void
+	 * @return bool
 	 */
-	public static function get_connected_account_id() {
-		return get_option( self::$connected_account_id_option_name );
+	public static function has_connected_account() {
+
+		// This is the primary solution.
+		$has_option = get_option( self::$has_connected_account_option_name, false ) ? true : false;
+		if ( $has_option ) {
+			return true;
+		}
+
+		// This is the fallback solution.
+		// TODO: Remove this once the has_connected_account_option is migrated to all sites.
+		return get_option( 'jetpack-memberships-connected-account-id', false ) ? true : false;
 	}
 
 	/**
-	 * Get the newsletter access level
+	 * Get the post access level
 	 *
-	 * @return string|void
+	 * If no ID is provided, the method tries to get it from the global post object.
+	 *
+	 * @param int|null $post_id The ID of the post. Default is null.
+	 *
+	 * @return string the actual post access level (see projects/plugins/jetpack/extensions/blocks/subscriptions/constants.js for the values).
 	 */
-	public static function get_newsletter_access_level() {
-		return get_post_meta( get_the_ID(), self::$newsletter_access_level_meta_name, true );
+	public static function get_post_access_level( $post_id = null ) {
+		if ( ! $post_id ) {
+			$post_id = get_the_ID();
+		}
+		if ( ! $post_id ) {
+			return Token_Subscription_Service::POST_ACCESS_LEVEL_EVERYBODY;
+		}
+
+		$post_access_level = get_post_meta( $post_id, self::$post_access_level_meta_name, true );
+		if ( empty( $post_access_level ) ) {
+			$post_access_level = Token_Subscription_Service::POST_ACCESS_LEVEL_EVERYBODY;
+		}
+		return $post_access_level;
 	}
 
 	/**
@@ -458,36 +497,30 @@ class Jetpack_Memberships {
 	 * @return bool Whether the post can be viewed
 	 */
 	public static function user_can_view_post() {
-		$user_id   = get_current_user_id();
-		$post_id   = get_the_ID() || 0;
-		$cache_key = sprintf( '%d_%d', $user_id, $post_id );
+		$user_id = get_current_user_id();
+		$post_id = get_the_ID();
 
+		if ( false === $post_id ) {
+			$post_id = 0;
+		}
+
+		$cache_key = sprintf( '%d_%d', $user_id, $post_id );
 		if ( isset( self::$user_can_view_post_cache[ $cache_key ] ) ) {
 			return self::$user_can_view_post_cache[ $cache_key ];
 		}
 
-		$value                                        = self::user_can_view_post_nocache();
-		self::$user_can_view_post_cache[ $cache_key ] = $value;
-		return $value;
-	}
-
-	/**
-	 * Determines whether the post can be viewed based on the newsletter access level
-	 *
-	 * @return bool Whether the post can be viewed
-	 */
-	public static function user_can_view_post_nocache() {
-		require_once JETPACK__PLUGIN_DIR . 'extensions/blocks/premium-content/_inc/subscription-service/include.php';
-
-		$newsletter_access_level = self::get_newsletter_access_level();
-
-		if ( ! $newsletter_access_level || Token_Subscription_Service::POST_ACCESS_LEVEL_EVERYBODY === $newsletter_access_level ) {
-			// The post is not gated, we return early
+		$post_access_level = self::get_post_access_level();
+		if ( Token_Subscription_Service::POST_ACCESS_LEVEL_EVERYBODY === $post_access_level ) {
+			self::$user_can_view_post_cache[ $cache_key ] = true;
 			return true;
 		}
 
-		$paywall = \Automattic\Jetpack\Extensions\Premium_Content\subscription_service();
-		return $paywall->visitor_can_view_content( self::get_all_plans_id_jetpack_recurring_payments(), $newsletter_access_level );
+		require_once JETPACK__PLUGIN_DIR . 'extensions/blocks/premium-content/_inc/subscription-service/include.php';
+		$paywall       = \Automattic\Jetpack\Extensions\Premium_Content\subscription_service();
+		$can_view_post = $paywall->visitor_can_view_content( self::get_all_newsletter_plan_ids(), $post_access_level );
+
+		self::$user_can_view_post_cache[ $cache_key ] = $can_view_post;
+		return $can_view_post;
 	}
 
 	/**
@@ -529,19 +562,22 @@ class Jetpack_Memberships {
 	}
 
 	/**
-	 * Return all plans
+	 * Return membership plans
 	 *
 	 * @return array
 	 */
-	public static function get_all_plans_id_jetpack_recurring_payments() {
+	public static function get_all_newsletter_plan_ids() {
 		if ( ! self::is_enabled_jetpack_recurring_payments() ) {
 			return array();
 		}
+
 		return get_posts(
 			array(
-				'post_type'      => self::$post_type_plan,
 				'posts_per_page' => -1,
 				'fields'         => 'ids',
+				'meta_value'     => true,
+				'post_type'      => self::$post_type_plan,
+				'meta_key'       => 'jetpack_memberships_site_subscriber',
 			)
 		);
 	}

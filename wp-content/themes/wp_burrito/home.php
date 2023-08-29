@@ -70,7 +70,39 @@ while ( $loop->have_posts() ): $loop->the_post(); ?>
     </div>
   </div>
 </div>
-<section class="reservation">
+<section class="reservation" style="background-color: black">
+<?php $args = array(
+	'show_option_all'    => '',
+	'show_option_none'   => __('No categories'),
+	'orderby'            => 'name',
+	'order'              => 'ASC',
+	'style'              => 'list',
+	'show_count'         => 0,
+	'hide_empty'         => 1,
+	'use_desc_for_title' => 0,
+	'child_of'           => 0,
+	'feed'               => '',
+	'feed_type'          => '',
+	'feed_image'         => '',
+	'exclude'            => '',
+	'exclude_tree'       => '',
+	'include'            => '',
+	'hierarchical'       => true,
+	'title_li'           => __( 'Categories' ),
+	'number'             => NULL,
+	'echo'               => 1,
+	'depth'              => 0,
+	'current_category'   => 0,
+	'pad_counts'         => 0,
+	'taxonomy'           => 'product_cat',
+	'walker'             => 'Walker_Category',
+	'hide_title_if_empty' => false,
+	'separator'          => '<br />',
+);
+
+echo '<ul>';
+	wp_list_categories( $args );
+echo '</ul>'; ?>
   <div class="container reservation__container">
     <div class="reservation__content">
       

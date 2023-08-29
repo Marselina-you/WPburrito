@@ -197,6 +197,19 @@ echo implode(  $attributes )  ;
 //echo  $attributes ;
     }
 }
+function blog_theme_widgets_init() {
+	register_sidebar( array(
+		'name' => esc_html__('phone', 'my_word'),
+		'id' => 'sidebar-1',
+		'description' => esc_html__('add widget here', 'my_word'),
+		'before_widget' => null,
+		'after_widget' => null,
+
+	) );
+}
+add_action( 'widgets_init', 'blog_theme_widgets_init' );
+remove_filter('widget_text_content', 'wpautop');
+//add_action('widgets_init', 'steam_widgets_init');  
 
 add_filter ( 'wp_list_categories', 'span_before_link_list_categories' );
 
